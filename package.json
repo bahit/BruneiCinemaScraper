@@ -1,0 +1,29 @@
+{
+  "name": "BruneiCinemaScraper",
+  "version": "0.1.0",
+  "description": "A tool to get all data from all cinema website in Brunei into a flatfile ready for parsing.",
+  "main": "main.js",
+  "dependencies": {
+    "cheerio": "^0.13.1",
+    "request": "^2.33.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahit/BruneiCinemaScraper.git"
+  },
+  "keywords": [
+    "brunei",
+    "cinema",
+    "scraper"
+  ],
+  "author": "Bahit Hamid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahit/BruneiCinemaScraper/issues"
+  },
+  "homepage": "https://github.com/bahit/BruneiCinemaScraper"
+}
