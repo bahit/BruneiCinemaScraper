@@ -1,77 +1,79 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
-// var url = 'http://timescineplex.com/schedule/';
-var url1 = 'http://timescineplex.com/empire/schedule/';
+var url = 'http://timescineplex.com/schedule/';
 
-
-request(url1, function(err, resp, body){
+request(url, function(err, resp, body){
   console.log('** Getting data from Times Cineplex.. **');
   
   if (err) {
     throw err;
   }
   $ = cheerio.load(body);
-  $('.movie-sched-outer').each(function() {
-    $(this).find('.movie-title').each(function() {
-      console.log('Title: ' + $(this).text());
+  console.log('** Getting data from Times Cineplex Schedule.. **');
+  
+  $('#time-quare').each(function() {
+    $(this).find('.movie-show-panel').each(function() {
+      $(this).find('h4').each(function() {
+        console.log('Title: ' + $(this).text());   
+      });
+      $(this).find('img').each(function() {
+        posterURL = $(this).attr('src');
+        console.log('Poster: ' + posterURL);
+      });
+      $(this).find('.boxes').each(function() {
+        date = $(this).find('.day').text();
+        time = $(this).find('.time').text().trim();
+        console.log('Date: ' + date);
+        console.log('Time: ' + time);
+      });
     });
-    $(this).find('.movie-poster').each(function() {
-      posterURL = $(this).find('a').attr('href');
-      console.log('Poster: ' + posterURL);
+    
+  });
+
+  console.log('** Getting data from Empire Schedule.. **');
+  
+  $('#empire-hotel').each(function() {
+    $(this).find('.movie-show-panel').each(function() {
+      $(this).find('h4').each(function() {
+        console.log('Title: ' + $(this).text());   
+      });
+      $(this).find('img').each(function() {
+        posterURL = $(this).attr('src');
+        console.log('Poster: ' + posterURL);
+      });
+      $(this).find('.boxes').each(function() {
+        date = $(this).find('.day').text();
+        time = $(this).find('.time').text().trim();
+        console.log('Date: ' + date);
+        console.log('Time: ' + time);
+      });
     });
-    $(this).find('.movie-poster').each(function() {
-      miniPosterURL = $(this).find('img').attr('src');
-      console.log('Poster: ' + miniPosterURL);
-    });
-    $(this).find('.table-col-1').each(function() {
-      date = $(this).find('.textwidget').text();
-      movTime = $(this).find('.table-contents').text().trim();
-      console.log('Date: ' + date);
-      console.log('Time: ' + movTime);
-    });
-    $(this).find('.table-col-2').each(function() {
-      date = $(this).find('.textwidget').text();
-      movTime = $(this).find('.table-contents').text().trim();
-      console.log('Date: ' + date);
-      console.log('Time: ' + movTime);
-    });
-    $(this).find('.table-col-3').each(function() {
-      date = $(this).find('.textwidget').text();
-      movTime = $(this).find('.table-contents').text().trim();
-      console.log('Date: ' + date);
-      console.log('Time: ' + movTime);
-    });
-    $(this).find('.table-col-4').each(function() {
-      date = $(this).find('.textwidget').text();
-      movTime = $(this).find('.table-contents').text().trim();
-      console.log('Date: ' + date);
-      console.log('Time: ' + movTime);
-    });
-    $(this).find('.table-col-5').each(function() {
-      date = $(this).find('.textwidget').text();
-      movTime = $(this).find('.table-contents').text().trim();
-      console.log('Date: ' + date);
-      console.log('Time: ' + movTime);
-    });
-    $(this).find('.table-col-6').each(function() {
-      date = $(this).find('.textwidget').text();
-      movTime = $(this).find('.table-contents').text().trim();
-      console.log('Date: ' + date);
-      console.log('Time: ' + movTime);
-    });
-    $(this).find('.table-col-7').each(function() {
-      date = $(this).find('.textwidget').text();
-      movTime = $(this).find('.table-contents').text().trim();
-      console.log('Date: ' + date);
-      console.log('Time: ' + movTime);
+    
+  });
+
+  console.log('** Getting data from Tutong Schedule.. **');
+  
+  $('#tutong').each(function() {
+    $(this).find('.movie-show-panel').each(function() {
+      $(this).find('h4').each(function() {
+        console.log('Title: ' + $(this).text());   
+      });
+      $(this).find('img').each(function() {
+        posterURL = $(this).attr('src');
+        console.log('Poster: ' + posterURL);
+      });
+      $(this).find('.boxes').each(function() {
+        date = $(this).find('.day').text();
+        time = $(this).find('.time').text().trim();
+        console.log('Date: ' + date);
+        console.log('Time: ' + time);
+      });
     });
     
   });
   console.log('** Finished processing Times Cineplex. **');
 });
-
-
 
 var url2 = 'http://www.mall-ticket.com/visShowtimes.aspx';
 
